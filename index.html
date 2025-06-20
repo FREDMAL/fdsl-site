@@ -23,6 +23,7 @@
             --text: #34495e;
             --success: #27ae60;
             --card-bg: rgba(255, 255, 255, 0.85);
+            --menu-height: 70px;
         }
         
         body {
@@ -50,7 +51,7 @@
         }
         
         .logo {
-            font-size: 2.5rem;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
             font-weight: bold;
             margin-bottom: 10px;
             color: #fff;
@@ -59,8 +60,9 @@
         
         .slogan {
             font-style: italic;
-            font-size: 1.2rem;
+            font-size: clamp(0.9rem, 2.5vw, 1.2rem);
             color: #ddd;
+            padding: 0 10px;
         }
         
         .music-player {
@@ -109,13 +111,35 @@
             accent-color: var(--accent);
         }
         
+        /* Menu responsivo */
         nav {
             background-color: var(--secondary);
-            padding: 15px 0;
+            padding: 0;
             position: sticky;
             top: 0;
             z-index: 100;
             backdrop-filter: blur(5px);
+            height: var(--menu-height);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+        }
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            padding: 10px;
         }
         
         nav ul {
@@ -123,23 +147,27 @@
             justify-content: center;
             list-style: none;
             flex-wrap: wrap;
+            height: 100%;
         }
         
         nav ul li {
-            margin: 0 15px;
+            margin: 0 5px;
+            display: flex;
+            align-items: center;
         }
         
         nav ul li a {
             color: white;
             text-decoration: none;
             font-weight: bold;
-            padding: 10px 20px;
+            padding: 10px 15px;
             border-radius: 50px;
             transition: all 0.3s ease;
-            font-size: 1.1rem;
+            font-size: clamp(0.9rem, 1.2vw, 1.1rem);
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(5px);
             border: 1px solid rgba(255, 255, 255, 0.2);
+            white-space: nowrap;
         }
         
         nav ul li a:hover, nav ul li a.active {
@@ -169,16 +197,17 @@
             margin-bottom: 40px;
             border-radius: 8px;
             overflow: hidden;
+            padding: 20px;
         }
         
         .hero h1 {
-            font-size: 2.8rem;
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
             margin-bottom: 20px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
         
         .hero p {
-            font-size: 1.3rem;
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
             max-width: 800px;
             margin-bottom: 30px;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
@@ -189,7 +218,7 @@
             text-align: center;
             color: var(--primary);
             margin-bottom: 50px;
-            font-size: 2.5rem;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
             position: relative;
             font-weight: 700;
         }
@@ -206,8 +235,8 @@
         
         .products {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 35px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
             margin-bottom: 80px;
         }
         
@@ -236,20 +265,20 @@
         
         /* Removido o escurecimento das imagens */
         .product-info {
-            padding: 30px;
+            padding: 20px;
         }
         
         .product-info h3 {
             margin-bottom: 15px;
             color: var(--primary);
-            font-size: 1.7rem;
+            font-size: clamp(1.4rem, 2vw, 1.7rem);
             font-weight: 700;
         }
         
         .product-info p {
             margin-bottom: 25px;
             color: var(--text);
-            font-size: 1.05rem;
+            font-size: clamp(0.95rem, 1.5vw, 1.05rem);
             line-height: 1.7;
         }
         
@@ -264,7 +293,7 @@
             padding: 10px;
             text-align: center;
             font-weight: bold;
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 1.5vw, 1.2rem);
             z-index: 2;
         }
         
@@ -272,13 +301,13 @@
             display: inline-block;
             background: linear-gradient(135deg, var(--secondary), var(--primary));
             color: white;
-            padding: 14px 30px;
+            padding: 12px 25px;
             border-radius: 50px;
             font-weight: bold;
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
-            font-size: 1.1rem;
+            font-size: clamp(0.95rem, 1.5vw, 1.1rem);
             box-shadow: 0 5px 15px rgba(40, 116, 166, 0.3);
             position: relative;
             overflow: hidden;
@@ -316,7 +345,7 @@
         
         .about {
             background: var(--card-bg);
-            padding: 60px;
+            padding: 40px;
             border-radius: 25px;
             box-shadow: 0 15px 40px rgba(0,0,0,0.08);
             margin-bottom: 80px;
@@ -339,8 +368,8 @@
         
         .about-text p {
             margin-bottom: 25px;
-            font-size: 1.15rem;
-            line-height: 1.9;
+            font-size: clamp(1rem, 1.5vw, 1.15rem);
+            line-height: 1.8;
         }
         
         .about-image {
@@ -357,7 +386,7 @@
         .contact {
             background: linear-gradient(135deg, var(--primary), #134b6d);
             color: white;
-            padding: 60px;
+            padding: 40px;
             border-radius: 25px;
             margin-bottom: 60px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.2);
@@ -366,11 +395,11 @@
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            gap: 40px;
         }
         
         .contact-info {
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 1.5vw, 1.2rem);
             padding: 20px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 20px;
@@ -379,7 +408,7 @@
         }
         
         .contact-info h3 {
-            font-size: 2rem;
+            font-size: clamp(1.6rem, 3vw, 2rem);
             margin-bottom: 25px;
             color: var(--accent-light);
             text-align: center;
@@ -400,14 +429,14 @@
         
         .contact-info i {
             margin-right: 15px;
-            font-size: 1.7rem;
+            font-size: clamp(1.4rem, 2vw, 1.7rem);
             width: 40px;
             color: var(--accent-light);
         }
         
         .contact-form {
             background: var(--card-bg);
-            padding: 40px;
+            padding: 30px;
             border-radius: 20px;
             backdrop-filter: blur(5px);
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
@@ -416,12 +445,12 @@
         .contact-form h3 {
             color: var(--primary);
             margin-bottom: 25px;
-            font-size: 1.8rem;
+            font-size: clamp(1.5rem, 2.5vw, 1.8rem);
             text-align: center;
         }
         
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
         
         .form-group label {
@@ -429,17 +458,17 @@
             margin-bottom: 10px;
             color: var(--text);
             font-weight: bold;
-            font-size: 1.1rem;
+            font-size: clamp(1rem, 1.5vw, 1.1rem);
         }
         
         .form-group input,
         .form-group textarea,
         .form-group select {
             width: 100%;
-            padding: 15px;
+            padding: 12px;
             border: 1px solid #ddd;
-            border-radius: 15px;
-            font-size: 1.1rem;
+            border-radius: 12px;
+            font-size: clamp(0.95rem, 1.5vw, 1.1rem);
             transition: all 0.3s ease;
             background: rgba(255, 255, 255, 0.7);
         }
@@ -461,7 +490,7 @@
         .confirmation-page {
             display: none;
             text-align: center;
-            padding: 50px;
+            padding: 40px 20px;
             background: var(--card-bg);
             border-radius: 20px;
             margin-top: 30px;
@@ -469,16 +498,16 @@
         }
         
         .confirmation-icon {
-            font-size: 5rem;
+            font-size: 4rem;
             color: var(--success);
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
         
         footer {
             background: linear-gradient(135deg, #2c3e50, var(--dark));
             color: white;
             text-align: center;
-            padding: 50px 0 30px;
+            padding: 40px 0 20px;
         }
         
         .footer-content {
@@ -486,14 +515,14 @@
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
+            gap: 30px;
             text-align: left;
-            padding: 0 20px 40px;
+            padding: 0 20px 30px;
         }
         
         .footer-column h3 {
-            margin-bottom: 25px;
-            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-size: clamp(1.3rem, 2vw, 1.5rem);
             color: var(--accent-light);
             position: relative;
             padding-bottom: 10px;
@@ -515,14 +544,15 @@
         }
         
         .footer-column ul li {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
         
         .footer-column ul li a {
             display: block;
-            padding: 8px 12px;
+            padding: 8px 10px;
             border-radius: 8px;
             transition: all 0.3s ease;
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
         }
         
         .footer-column ul li a:hover {
@@ -532,105 +562,157 @@
         }
         
         .copyright {
-            margin-top: 40px;
-            padding-top: 25px;
+            margin-top: 30px;
+            padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: #bbb;
+            padding: 0 20px;
         }
         
+        /* Media Queries para responsividade */
+        
+        /* Tablets */
         @media (max-width: 992px) {
             .contact-grid {
                 grid-template-columns: 1fr;
             }
             
             .hero {
-                height: 60vh;
+                height: 50vh;
+            }
+            
+            .products {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             }
         }
         
+        /* Tablets pequenos e celulares grandes */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.3rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            nav ul li {
-                margin: 5px;
-            }
-            
-            nav ul li a {
-                padding: 8px 15px;
-                font-size: 1rem;
-            }
-            
-            .about-content {
-                flex-direction: column;
+            .hero {
+                height: 45vh;
+                min-height: 350px;
             }
             
             .about {
-                padding: 40px;
+                padding: 30px;
             }
             
-            .section-title {
-                font-size: 2rem;
+            .contact {
+                padding: 30px;
             }
             
-            .music-player {
-                top: 10px;
-                right: 10px;
-                padding: 6px 12px;
-                font-size: 0.9rem;
+            .about-image {
+                height: 300px;
             }
             
-            .volume-control input {
-                width: 60px;
+            /* Menu responsivo */
+            .menu-toggle {
+                display: block;
             }
             
-            .footer-content {
-                gap: 30px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .logo {
-                font-size: 2rem;
-                padding-top: 20px;
-            }
-            
-            .slogan {
-                font-size: 1rem;
-            }
-            
-            .hero h1 {
-                font-size: 1.8rem;
+            nav ul {
+                position: fixed;
+                top: var(--menu-height);
+                left: 0;
+                width: 100%;
+                background-color: var(--secondary);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                height: auto;
+                transform: translateY(-150%);
+                transition: transform 0.4s ease;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
             }
             
-            .section-title {
-                font-size: 1.8rem;
+            nav ul.active {
+                transform: translateY(0);
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+                width: 90%;
+                justify-content: center;
+            }
+            
+            nav ul li a {
+                width: 100%;
+                text-align: center;
+                padding: 12px;
             }
             
             .music-player {
                 position: relative;
-                top: 0;
-                right: 0;
-                margin: 15px auto;
+                top: initial;
+                right: initial;
+                margin: 15px auto 0;
                 width: fit-content;
+            }
+        }
+        
+        /* Celulares */
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .hero {
+                height: 40vh;
+                min-height: 300px;
             }
             
             .about {
-                padding: 30px 20px;
+                padding: 20px 15px;
             }
             
             .contact {
-                padding: 40px 20px;
+                padding: 25px 15px;
             }
             
             .contact-form {
-                padding: 25px;
+                padding: 20px;
+            }
+            
+            .about-image {
+                height: 250px;
+            }
+            
+            .products {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-column h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .copyright {
+                font-size: 0.85rem;
+            }
+            
+            .logo {
+                padding-top: 10px;
+            }
+        }
+        
+        /* Celulares pequenos */
+        @media (max-width: 360px) {
+            .hero {
+                min-height: 280px;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+            }
+            
+            .product-info {
+                padding: 15px;
             }
         }
     </style>
@@ -651,12 +733,17 @@
     </header>
     
     <nav>
-        <ul>
-            <li><a href="#inicio" class="active">Início</a></li>
-            <li><a href="#produtos">Produtos</a></li>
-            <li><a href="#sobre">Sobre Nós</a></li>
-            <li><a href="#contato">Contato</a></li>
-        </ul>
+        <div class="nav-container">
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul id="navMenu">
+                <li><a href="#inicio" class="active">Início</a></li>
+                <li><a href="#produtos">Produtos</a></li>
+                <li><a href="#sobre">Sobre Nós</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </div>
     </nav>
     
     <div class="container">
@@ -908,6 +995,40 @@
                     link.classList.add('active');
                 }
             });
+        });
+        
+        // Menu responsivo
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        menuToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            if (navMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Fechar menu ao clicar em um item
+        navMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('active');
+                menuToggle.querySelector('i').classList.remove('fa-times');
+                menuToggle.querySelector('i').classList.add('fa-bars');
+            });
+        });
+        
+        // Fechar menu ao redimensionar para telas maiores
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                navMenu.classList.remove('active');
+                menuToggle.querySelector('i').classList.remove('fa-times');
+                menuToggle.querySelector('i').classList.add('fa-bars');
+            }
         });
     </script>
 </body>
