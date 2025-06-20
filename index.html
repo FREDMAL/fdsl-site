@@ -2,40 +2,50 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FDSL Indústria de Pré-Moldados | Blocos de Concreto em São Miguel do Guaporé - RO</title>
-    <meta name="description" content="Fabricação e venda de blocos pré-moldados, pavers, blocos estruturais e canaletas. Atendemos São Miguel do Guaporé e região.">
-    <meta name="keywords" content="blocos pré-moldados, pavers, concreto, construção civil, São Miguel do Guaporé, canaletas">
-    <link rel="canonical" href="https://fdsl.com.br">
+    <title>FDSL Indústria de Pré-Moldados | Concreto de Qualidade</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* Reset e Estilos Globais */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: Arial,Segoe UI, Tahoma, Geneva, Verdana, 'sans-serif';
+        }
+        
+        :root {
+            --primary: #1a5276;
+            --secondary: #2874a6;
+            --accent: #f39c12;
+            --accent-light: #f1c40f;
+            --light: #f5f5f5;
+            --dark: #333;
+            --text: #34495e;
+            --success: #27ae60;
+            --card-bg: rgba(255, 255, 255, 0.85);
         }
         
         body {
-            background-color: #f5f5f5;
-            color: #333;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            color: var(--text);
             line-height: 1.6;
             overflow-x: hidden;
+            min-height: 100vh;
         }
         
         a {
             text-decoration: none;
             color: inherit;
+            transition: all 0.3s ease;
         }
         
-        /* Cabeçalho */
+        /* Cabeçalho sem cantos arredondados */
         header {
-            background-color: #1a5276;
+            background-color: var(--primary);
             color: white;
             padding: 20px 0;
             text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             position: relative;
         }
         
@@ -44,6 +54,7 @@
             font-weight: bold;
             margin-bottom: 10px;
             color: #fff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
         
         .slogan {
@@ -52,7 +63,6 @@
             color: #ddd;
         }
         
-        /* Player de Música */
         .music-player {
             position: absolute;
             top: 20px;
@@ -63,7 +73,8 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
         
         .music-player button {
@@ -83,6 +94,7 @@
         
         .music-player button:hover {
             background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
         }
         
         .volume-control {
@@ -93,15 +105,17 @@
         
         .volume-control input {
             width: 80px;
+            height: 5px;
+            accent-color: var(--accent);
         }
         
-        /* Navegação */
         nav {
-            background-color: #2874a6;
+            background-color: var(--secondary);
             padding: 15px 0;
             position: sticky;
             top: 0;
             z-index: 100;
+            backdrop-filter: blur(5px);
         }
         
         nav ul {
@@ -119,25 +133,27 @@
             color: white;
             text-decoration: none;
             font-weight: bold;
-            padding: 8px 15px;
-            border-radius: 5px;
+            padding: 10px 20px;
+            border-radius: 50px;
             transition: all 0.3s ease;
             font-size: 1.1rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         nav ul li a:hover, nav ul li a.active {
-            background-color: #1a5276;
-            transform: translateY(-2px);
+            background-color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
-        /* Conteúdo Principal */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
         
-        /* Banner Principal */
         .hero {
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/banner.jpg');
             background-size: cover;
@@ -153,7 +169,6 @@
             margin-bottom: 40px;
             border-radius: 8px;
             overflow: hidden;
-            position: relative;
         }
         
         .hero h1 {
@@ -169,252 +184,301 @@
             text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
         
-        /* Seção de Produtos */
+        
         .section-title {
             text-align: center;
-            color: #1a5276;
-            margin-bottom: 40px;
-            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 50px;
+            font-size: 2.5rem;
             position: relative;
+            font-weight: 700;
         }
         
         .section-title::after {
             content: '';
             display: block;
             width: 100px;
-            height: 4px;
-            background: #2874a6;
+            height: 5px;
+            background: var(--accent);
             margin: 15px auto;
-            border-radius: 2px;
+            border-radius: 5px;
         }
         
         .products {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-            margin-bottom: 60px;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 35px;
+            margin-bottom: 80px;
         }
         
         .product-card {
-            background-color: white;
-            border-radius: 8px;
+            background-color: var(--card-bg);
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
         }
         
         .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         }
         
         .product-image {
-            height: 200px;
+            height: 250px;
             background-size: cover;
             background-position: center;
-            background-color: #eee;
+            position: relative;
+            overflow: hidden;
         }
         
+        /* Removido o escurecimento das imagens */
         .product-info {
-            padding: 25px;
+            padding: 30px;
         }
         
         .product-info h3 {
             margin-bottom: 15px;
-            color: #1a5276;
-            font-size: 1.5rem;
+            color: var(--primary);
+            font-size: 1.7rem;
+            font-weight: 700;
         }
         
         .product-info p {
-            margin-bottom: 20px;
-            color: #555;
+            margin-bottom: 25px;
+            color: var(--text);
+            font-size: 1.05rem;
+            line-height: 1.7;
         }
         
-        /* Botões */
+        /* Mensagem simplificada */
+        .paver-notice {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(243, 156, 18, 0.95);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            z-index: 2;
+        }
+        
         .btn {
             display: inline-block;
-            background-color: #2874a6;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
             color: white;
-            padding: 12px 25px;
-            border-radius: 5px;
+            padding: 14px 30px;
+            border-radius: 50px;
             font-weight: bold;
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
-            font-size: 1rem;
+            font-size: 1.1rem;
+            box-shadow: 0 5px 15px rgba(40, 116, 166, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-100%);
+            transition: transform 0.4s ease;
+        }
+        
+        .btn:hover::before {
+            transform: translateX(100%);
         }
         
         .btn:hover {
-            background-color: #1a5276;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(40, 116, 166, 0.4);
         }
         
-        .btn-outline {
-            background: transparent;
-            border: 2px solid #2874a6;
-            color: #2874a6;
+        .btn-accent {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            box-shadow: 0 5px 15px rgba(243, 156, 18, 0.3);
         }
         
-        .btn-outline:hover {
-            background: #2874a6;
-            color: white;
+        .btn-accent:hover {
+            box-shadow: 0 8px 20px rgba(243, 156, 18, 0.4);
         }
         
-        /* Sobre Nós */
         .about {
-            background-color: white;
-            padding: 50px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            margin-bottom: 60px;
+            background: var(--card-bg);
+            padding: 60px;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            margin-bottom: 80px;
             text-align: center;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
         }
         
         .about-content {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 30px;
+            gap: 40px;
         }
         
         .about-text {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
         }
         
         .about-text p {
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 1s forwards;
-        }
-        
-        .about-text p:nth-child(1) { animation-delay: 0.2s; }
-        .about-text p:nth-child(2) { animation-delay: 0.5s; }
-        .about-text p:nth-child(3) { animation-delay: 0.8s; }
-        
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            margin-bottom: 25px;
+            font-size: 1.15rem;
+            line-height: 1.9;
         }
         
         .about-image {
             width: 100%;
-            max-width: 600px;
-            height: 300px;
-            background: url('images/fabrica.jpg') center/cover;
-            border-radius: 8px;
+            max-width: 700px;
+            height: 350px;
+            background: url('https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80') center/cover;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            overflow: hidden;
+            position: relative;
         }
         
-        /* Contato */
         .contact {
-            background-color: #1a5276;
+            background: linear-gradient(135deg, var(--primary), #134b6d);
             color: white;
-            padding: 50px;
-            border-radius: 8px;
-            margin-bottom: 40px;
+            padding: 60px;
+            border-radius: 25px;
+            margin-bottom: 60px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
         }
         
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 40px;
+            gap: 50px;
         }
         
         .contact-info {
             font-size: 1.2rem;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         .contact-info h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
+            font-size: 2rem;
+            margin-bottom: 25px;
+            color: var(--accent-light);
+            text-align: center;
         }
         
         .contact-info p {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
+            padding: 10px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-info p:hover {
+            background: rgba(255, 255, 255, 0.15);
         }
         
         .contact-info i {
-            margin-right: 10px;
-            font-size: 1.5rem;
-            width: 30px;
+            margin-right: 15px;
+            font-size: 1.7rem;
+            width: 40px;
+            color: var(--accent-light);
         }
         
         .contact-form {
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
         
         .contact-form h3 {
-            color: #1a5276;
-            margin-bottom: 20px;
-            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+            text-align: center;
         }
         
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
         
         .form-group label {
             display: block;
-            margin-bottom: 8px;
-            color: #555;
+            margin-bottom: 10px;
+            color: var(--text);
             font-weight: bold;
+            font-size: 1.1rem;
         }
         
         .form-group input,
         .form-group textarea,
         .form-group select {
             width: 100%;
-            padding: 12px;
+            padding: 15px;
             border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.7);
         }
         
         .form-group input:focus,
         .form-group textarea:focus,
         .form-group select:focus {
-            border-color: #2874a6;
+            border-color: var(--accent);
             outline: none;
-            box-shadow: 0 0 0 2px rgba(40, 116, 166, 0.2);
+            box-shadow: 0 0 0 3px rgba(243, 156, 18, 0.2);
+            background: white;
         }
         
         .form-group textarea {
-            height: 120px;
+            height: 140px;
             resize: vertical;
         }
         
         .confirmation-page {
             display: none;
             text-align: center;
-            padding: 40px;
-            background: white;
-            border-radius: 8px;
+            padding: 50px;
+            background: var(--card-bg);
+            border-radius: 20px;
             margin-top: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
         }
         
         .confirmation-icon {
-            font-size: 4rem;
-            color: #28a745;
-            margin-bottom: 20px;
+            font-size: 5rem;
+            color: var(--success);
+            margin-bottom: 25px;
         }
         
-        /* Rodapé */
         footer {
-            background-color: #333;
+            background: linear-gradient(135deg, #2c3e50, var(--dark));
             color: white;
             text-align: center;
-            padding: 30px 0;
+            padding: 50px 0 30px;
         }
         
         .footer-content {
@@ -422,15 +486,28 @@
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
+            gap: 40px;
             text-align: left;
-            padding: 0 20px;
+            padding: 0 20px 40px;
         }
         
         .footer-column h3 {
-            margin-bottom: 20px;
-            font-size: 1.3rem;
-            color: #2874a6;
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+            color: var(--accent-light);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 3px;
         }
         
         .footer-column ul {
@@ -438,24 +515,43 @@
         }
         
         .footer-column ul li {
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .footer-column ul li a {
+            display: block;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
         }
         
         .footer-column ul li a:hover {
-            color: #2874a6;
+            background: rgba(255, 255, 255, 0.1);
+            padding-left: 15px;
+            color: var(--accent-light);
         }
         
         .copyright {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid #555;
-            font-size: 0.9rem;
+            margin-top: 40px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 1rem;
+            color: #bbb;
         }
         
-        /* Responsividade */
+        @media (max-width: 992px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero {
+                height: 60vh;
+            }
+        }
+        
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 2rem;
+                font-size: 2.3rem;
             }
             
             .hero p {
@@ -467,31 +563,35 @@
             }
             
             nav ul li a {
-                padding: 8px 12px;
-                font-size: 0.9rem;
+                padding: 8px 15px;
+                font-size: 1rem;
             }
             
             .about-content {
                 flex-direction: column;
             }
             
-            .about-image {
-                width: 100%;
+            .about {
+                padding: 40px;
             }
             
-            .contact-grid {
-                grid-template-columns: 1fr;
+            .section-title {
+                font-size: 2rem;
             }
             
             .music-player {
                 top: 10px;
                 right: 10px;
-                padding: 5px 10px;
+                padding: 6px 12px;
                 font-size: 0.9rem;
             }
             
             .volume-control input {
                 width: 60px;
+            }
+            
+            .footer-content {
+                gap: 30px;
             }
         }
         
@@ -517,20 +617,29 @@
                 position: relative;
                 top: 0;
                 right: 0;
-                margin: 10px auto;
+                margin: 15px auto;
                 width: fit-content;
+            }
+            
+            .about {
+                padding: 30px 20px;
+            }
+            
+            .contact {
+                padding: 40px 20px;
+            }
+            
+            .contact-form {
+                padding: 25px;
             }
         }
     </style>
-    <!-- Ícones do Font Awesome com HTTPS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
 <body>
     <header>
         <div class="logo">FDSL PRÉ-MOLDADOS</div>
         <div class="slogan">Qualidade e Resistência em Concreto</div>
         
-        <!-- Player de Música -->
         <div class="music-player">
             <button id="playPauseBtn"><i class="fas fa-play"></i></button>
             <div class="volume-control">
@@ -552,19 +661,25 @@
     
     <div class="container">
         <section id="inicio" class="hero">
-            <h1>Blocos Pré-Moldados de Alta Qualidade</h1>
-            <p>Fabricamos blocos estruturais, pavers, canaletas e outros produtos em concreto para sua obra. Atendemos exclusivamente a região de São Miguel do Guaporé - RO.</p>
-            <a href="#contato" class="btn">Faça seu Pedido</a>
+            <div class="hero-content">
+                <h1>Blocos Pré-Moldados de Alta Qualidade</h1>
+                <p>Fabricamos blocos estruturais, pavers, canaletas e outros produtos em concreto para sua obra. Atendemos exclusivamente a região de São Miguel do Guaporé - RO.</p>
+                <a href="#contato" class="btn">Faça seu Pedido</a>
+            </div>
         </section>
         
         <section id="produtos">
             <h2 class="section-title">Nossos Produtos</h2>
             <div class="products">
                 <div class="product-card">
-                    <div class="product-image" style="background-image: url('images/paver.jpg');"></div>
+                    <div class="product-image" style="background-image: url('images/paver.jpg');">
+                        <div class="paver-notice">
+                            <i class="fas fa-info-circle"></i> Em breve
+                        </div>
+                    </div>
                     <div class="product-info">
                         <h3>Blocos Pavers</h3>
-                        <p>Blocos para pavimentação com alta resistência e diversos modelos disponíveis. Ideal para calçadas, garagens e áreas externas.</p>
+                        <p>Blocos para pavimentação com alta resistência e diversos modelos disponíveis. Ideal para calçadas, garagens e áreas externas. Estamos trabalhando em novos designs e cores.</p>
                         <a href="#contato" class="btn">Solicitar Orçamento</a>
                     </div>
                 </div>
@@ -573,7 +688,7 @@
                     <div class="product-image" style="background-image: url('images/estrutural.jpg');"></div>
                     <div class="product-info">
                         <h3>Blocos Estruturais</h3>
-                        <p>Blocos para construção de paredes estruturais, com excelente resistência e durabilidade. Diversas medidas disponíveis.</p>
+                        <p>Blocos para construção de paredes estruturais, com excelente resistência e durabilidade. Diversas medidas disponíveis. Garantia de qualidade em todas as peças.</p>
                         <a href="#contato" class="btn">Solicitar Orçamento</a>
                     </div>
                 </div>
@@ -582,7 +697,7 @@
                     <div class="product-image" style="background-image: url('images/canaletas.jpg');"></div>
                     <div class="product-info">
                         <h3>Blocos de Canaletas</h3>
-                        <p>Blocos especiais para canalização com ótimo acabamento e alta resistência. Ideal para sistemas de drenagem e infraestrutura.</p>
+                        <p>Blocos especiais para canalização com ótimo acabamento e alta resistência. Ideal para sistemas de drenagem e infraestrutura. Resistência comprovada em testes.</p>
                         <a href="#contato" class="btn">Solicitar Orçamento</a>
                     </div>
                 </div>
@@ -594,7 +709,7 @@
             <div class="about-content">
                 <div class="about-text">
                     <p>A FDSL é uma indústria especializada na fabricação de blocos pré-moldados em concreto, localizada em São Miguel do Guaporé - RO. Nossa missão é fornecer produtos de alta qualidade que atendam às necessidades da construção civil na região.</p>
-                    <p>Utilizamos matéria-prima de primeira linha e seguimos rigorosos padrões de qualidade em todo o processo produtivo, garantindo a satisfação de nossos clientes.</p>
+                    <p>Utilizamos matéria-prima de primeira linha e seguimos rigorosos padrões de qualidade em todo o processo produtivo, garantindo a satisfação de nossos clientes. Estamos constantemente inovando em nossos produtos e processos.</p>
                     <p>Trabalhamos exclusivamente sob encomenda, garantindo que cada produto seja fabricado de acordo com as especificações do cliente. Nossa área de atuação é exclusivamente a região de São Miguel do Guaporé.</p>
                 </div>
                 <div class="about-image"></div>
@@ -641,7 +756,7 @@
                             <label for="message">Mensagem:</label>
                             <textarea id="message" name="message" required></textarea>
                         </div>
-                        <button type="submit" class="btn">Enviar Mensagem</button>
+                        <button type="submit" class="btn btn-accent">Enviar Mensagem</button>
                     </form>
                     
                     <div class="confirmation-page" id="confirmationPage">
@@ -650,7 +765,7 @@
                         </div>
                         <h3>Mensagem Enviada com Sucesso!</h3>
                         <p>Obrigado pelo seu contato. Entraremos em contato o mais breve possível.</p>
-                        <button class="btn" id="newMessageBtn">Enviar Nova Mensagem</button>
+                        <button class="btn btn-accent" id="newMessageBtn">Enviar Nova Mensagem</button>
                     </div>
                 </div>
             </div>
@@ -662,6 +777,7 @@
             <div class="footer-column">
                 <h3>FDSL Pré-Moldados</h3>
                 <p>Especializada na fabricação de blocos de concreto de alta qualidade para construção civil.</p>
+                <p style="margin-top: 15px;"><i class="fas fa-map-marker-alt"></i> São Miguel do Guaporé - RO</p>
             </div>
             <div class="footer-column">
                 <h3>Produtos</h3>
@@ -687,7 +803,6 @@
         </div>
     </footer>
 
-    <!-- Áudio para a música de fundo com HTTPS -->
     <audio id="backgroundMusic" loop>
         <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
         Seu navegador não suporta áudio.
@@ -701,10 +816,8 @@
         const volumeUpBtn = document.getElementById('volumeUp');
         const volumeDownBtn = document.getElementById('volumeDown');
         
-        // Configurar volume inicial
         backgroundMusic.volume = volumeSlider.value;
         
-        // Play/Pause
         playPauseBtn.addEventListener('click', function() {
             if (backgroundMusic.paused) {
                 backgroundMusic.play();
@@ -715,12 +828,10 @@
             }
         });
         
-        // Controle de volume pelo slider
         volumeSlider.addEventListener('input', function() {
             backgroundMusic.volume = volumeSlider.value;
         });
         
-        // Aumentar volume
         volumeUpBtn.addEventListener('click', function() {
             if (volumeSlider.value < 1) {
                 volumeSlider.value = parseFloat(volumeSlider.value) + 0.1;
@@ -728,7 +839,6 @@
             }
         });
         
-        // Diminuir volume
         volumeDownBtn.addEventListener('click', function() {
             if (volumeSlider.value > 0) {
                 volumeSlider.value = parseFloat(volumeSlider.value) - 0.1;
@@ -744,15 +854,12 @@
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Simular envio do formulário
             setTimeout(function() {
-                // Esconder o formulário e mostrar a confirmação
                 contactForm.style.display = 'none';
                 confirmationPage.style.display = 'block';
             }, 1000);
         });
         
-        // Botão para nova mensagem
         newMessageBtn.addEventListener('click', function() {
             contactForm.reset();
             contactForm.style.display = 'block';
@@ -773,7 +880,6 @@
                         behavior: 'smooth'
                     });
                     
-                    // Atualizar navegação ativa
                     document.querySelectorAll('nav a').forEach(link => {
                         link.classList.remove('active');
                     });
