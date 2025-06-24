@@ -42,24 +42,36 @@
             transition: all 0.3s ease;
         }
         
-        /* Relógio e Player no cabeçalho - menor e à esquerda */
-        .header-controls {position: absolute;
-            top: 2px;
-            left: 1px;
+        /* Layout adaptativo para os controles do cabeçalho */
+        .header-container {
             display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
             align-items: center;
-            gap: 1px;
+            padding: 10px 20px;
+            background-color: var(--primary);
+        }
+        
+        .logo-area {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+        }
+        
+        .header-controls {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 8px;
             background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(1px);
             border-radius: 30px;
-            padding: 1px 15px;
+            padding: 8px 15px;
             border: 1px solid rgba(39, 174, 96, 0.4);
             z-index: 10;
             max-width: 280px;
             transition: all 0.4s ease;
-            
-
-
+            margin-top: 5px;
         }
         
         .top-clock {
@@ -123,7 +135,7 @@
         header {
             background-color: var(--primary);
             color: white;
-            padding: 20px 0;
+            padding: 10px 0;
             text-align: center;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             position: relative;
@@ -1030,12 +1042,16 @@
                 font-size: 2rem;
             }
             
+            .header-container {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
             .header-controls {
-                top: 5px;
-                left: 5px;
-                padding: 5px 10px;
-                gap: 8px;
-                max-width: 280px;
+                margin-top: 15px;
+                align-self: center;
+                max-width: 100%;
             }
             
             .volume-control input {
@@ -1079,7 +1095,6 @@
         @media (max-width: 480px) {
             .logo {
                 font-size: 1.8rem;
-                padding-top: 20px;
             }
             
             .hero h1 {
@@ -1091,12 +1106,11 @@
             }
             
             .header-controls {
-                position: relative;
-                top: 0;
-                left: 0;
-                margin: 10px auto;
-                width: 95%;
+                width: 100%;
                 max-width: none;
+                flex-direction: row;
+                justify-content: center;
+                padding: 5px 10px;
             }
             
             .about {
@@ -1122,23 +1136,38 @@
             .nav-player {
                 padding: 5px 10px;
             }
+            
+            .radio-controls {
+                flex-wrap: wrap;
+            }
+            
+            .radio-progress {
+                order: 1;
+                width: 100%;
+                margin-top: 10px;
+            }
         }
     </style>
 </head>
 <body>
 
     <header>
-
-
+        <div class="header-container">
+            <div class="logo-area">
+                <div class="logo">FDSL PRÉ-MOLDADOS</div>
+                <div class="slogan">Qualidade e Resistência em Concreto</div>
+            </div>
             
-       
-
-          </div>      
-       
-</ul>
-        
-        <div class="logo">FDSL PRÉ-MOLDADOS</div>
-        <div class="slogan">Qualidade e Resistência em Concreto</div>
+            <!-- Controles de relógio e música no cabeçalho -->
+            <div class="header-controls">
+                <div class="top-clock" id="relogio">
+                    <div class="clock-time" id="clock-time">00:00:00</div>
+                    <div class="clock-date" id="clock-date">01/01/2023</div>
+                </div>
+                
+                </div>
+            </div>
+        </div>
     </header>
     
     <nav>
@@ -1151,19 +1180,6 @@
             <li>
                 <a href="index2.html" target="_blank" class="shop-btn">FDSLShop</a>
             </li>
-</li>
-                     
- <!-- Controles de relógio e música no cabeçalho -->
-        <div class="header-controls">
-            <div class="top-clock" id="relogio">
-                <div class="clock-time" id="clock-time">00:00:00</div>
-                <div class="clock-date" id="clock-date">01/01/2023</div>
-            </div>
-                </div>
-
-
- 
-        </div>
         </ul>
     </nav>
 
@@ -1175,8 +1191,6 @@
                 <p>Fabricamos blocos estruturais, pavers, canaletas e outros produtos em concreto para sua obra. Atendemos exclusivamente a região de São Miguel do Guaporé - RO.</p>
                 <a href="#produtos" class="btn">Ver Produtos</a>
             </div>
-
-
         </section>
         
         <section id="produtos">
@@ -1258,39 +1272,38 @@
                             </div>
                         </div>
                     </div>
-            </div>
-<!-- Player de Rádio com Músicas Internacionais -->
-            <div class="radio-player-container">
-                <div class="radio-info">
-                    <div class="radio-icon">
-                        <i class="fas fa-music"></i>
-                    </div>
-                    <div class="radio-text">
-                        <h3>Rádio Jovem Pan Internacional</h3>
-                        <p>Músicas internacionais 24 horas</p>
-                    </div>
                 </div>
                 
-                <div class="radio-controls">
-                    <button id="radio-prev"><i class="fas fa-step-backward"></i></button>
-                    <button id="radio-playPauseBtn"><i class="fas fa-play"></i></button>
-                    <button id="radio-next"><i class="fas fa-step-forward"></i></button>
-                    <div class="radio-progress">
-                        <div class="progress-bar" id="progressBar"></div>
-                    </div>
-                    <div class="radio-volume">
-                        <i class="fas fa-volume-up"></i>
-                        <input type="range" id="radio-volumeSlider" min="0" max="1" step="0.1" value="0.5">
-                    </div>
-                </div>
-                
-                <div class="now-playing" id="nowPlaying">
-                    TOCANDO AGORA: <span>Carregando...</span></a>
-                     </li
+                <!-- Player de Músicas Locais -->
+                <div class="radio-player-container">
+                    <div class="radio-info">
+                        <div class="radio-icon">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <div class="radio-text">
+                            <h3>Músicas Locais</h3>
+                            <p>Seleção de músicas da pasta /mp3</p>
                         </div>
                     </div>
+                    
+                    <div class="radio-controls">
+                        <button id="radio-prev"><i class="fas fa-step-backward"></i></button>
+                        <button id="radio-playPauseBtn"><i class="fas fa-play"></i></button>
+                        <button id="radio-next"><i class="fas fa-step-forward"></i></button>
+                        <div class="radio-progress">
+                            <div class="progress-bar" id="progressBar"></div>
+                        </div>
+                        <div class="radio-volume">
+                            <i class="fas fa-volume-up"></i>
+                            <input type="range" id="radio-volumeSlider" min="0" max="1" step="0.1" value="0.5">
+                        </div>
+                    </div>
+                    
+                    <div class="now-playing" id="nowPlaying">
+                        TOCANDO AGORA: <span>Nenhuma música selecionada</span>
+                    </div>
                 </div>
-             </div>
+            </div>
         </section>
         
         <section id="contato" class="contact">
@@ -1404,7 +1417,7 @@
                     </div>
                     
                     <div class="pix-code">
-               
+                        <!-- Código PIX aqui -->
                     </div>
                     
                     <p>Após o pagamento, seu pedido será processado em até 24 horas.</p>
@@ -1533,7 +1546,7 @@
         updateWeather();
         setInterval(updateWeather, 1800000);
         
-        // Player de Rádio Online
+        // Player de Músicas Locais
         const radioPlayPauseBtn = document.getElementById('radio-playPauseBtn');
         const radioVolumeSlider = document.getElementById('radio-volumeSlider');
         const nowPlayingElement = document.getElementById('nowPlaying');
@@ -1541,79 +1554,86 @@
         const radioPrevBtn = document.getElementById('radio-prev');
         const radioNextBtn = document.getElementById('radio-next');
         
-        // Lista de músicas internacionais populares
+        // Lista de músicas locais (arquivos na pasta /mp3)
         const musicList = [
-            { title: "Blinding Lights", artist: "The Weeknd" },
-            { title: "Save Your Tears", artist: "The Weeknd" },
-            { title: "Levitating", artist: "Dua Lipa" },
-            { title: "Stay", artist: "The Kid LAROI, Justin Bieber" },
-            { title: "Good 4 U", artist: "Olivia Rodrigo" },
-            { title: "Peaches", artist: "Justin Bieber" },
-            { title: "Kiss Me More", artist: "Doja Cat ft. SZA" },
-            { title: "Montero", artist: "Lil Nas X" },
-            { title: "Butter", artist: "BTS" },
-            { title: "Industry Baby", artist: "Lil Nas X ft. Jack Harlow" }
+            { title: "Música 1", artist: "Artista 1", file: "musica1.mp3" },
+            { title: "Música 2", artist: "Artista 2", file: "musica2.mp3" },
+            { title: "Música 3", artist: "Artista 3", file: "musica3.mp3" },
+            { title: "Música 4", artist: "Artista 4", file: "musica4.mp3" },
+            { title: "Música 5", artist: "Artista 5", file: "musica5.mp3" }
         ];
         
-        let radioPlaying = false;
         let currentSongIndex = 0;
-        let progressInterval;
+        let audio = new Audio();
+        let isPlaying = false;
+        let progressUpdateInterval;
         
-        // Função para simular progresso da música
-        function updateProgress() {
-            let progress = 0;
-            progressInterval = setInterval(() => {
-                progress += Math.random() * 0.5;
-                if (progress > 100) {
-                    progress = 0;
+        // Função para carregar e tocar a música
+        function loadSong(index) {
+            const song = musicList[index];
+            audio.src = `mp3/${song.file}`;
+            audio.load();
+            updateNowPlaying(song.title, song.artist);
+            playSong();
+        }
+        
+        function playSong() {
+            audio.play();
+            isPlaying = true;
+            radioPlayPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            startProgressUpdate();
+        }
+        
+        function pauseSong() {
+            audio.pause();
+            isPlaying = false;
+            radioPlayPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+            clearInterval(progressUpdateInterval);
+        }
+        
+        function updateNowPlaying(title, artist) {
+            nowPlayingElement.innerHTML = `TOCANDO AGORA: <span>${title} - ${artist}</span>`;
+        }
+        
+        function startProgressUpdate() {
+            clearInterval(progressUpdateInterval);
+            progressUpdateInterval = setInterval(() => {
+                const progress = (audio.currentTime / audio.duration) * 100;
+                progressBar.style.width = `${progress}%`;
+                if (progress >= 100) {
                     playNextSong();
                 }
-                progressBar.style.width = `${progress}%`;
             }, 1000);
         }
         
-        // Função para atualizar a música atual
-        function updateNowPlaying() {
-            const song = musicList[currentSongIndex];
-            nowPlayingElement.innerHTML = `TOCANDO AGORA: <span>${song.title} - ${song.artist}</span>`;
-        }
-        
-        // Função para tocar a próxima música
         function playNextSong() {
-            clearInterval(progressInterval);
             currentSongIndex = (currentSongIndex + 1) % musicList.length;
-            updateNowPlaying();
-            updateProgress();
+            loadSong(currentSongIndex);
         }
         
-        // Função para tocar a música anterior
         function playPrevSong() {
-            clearInterval(progressInterval);
             currentSongIndex = (currentSongIndex - 1 + musicList.length) % musicList.length;
-            updateNowPlaying();
-            updateProgress();
+            loadSong(currentSongIndex);
         }
         
-        // Eventos do player de rádio
-        radioPlayPauseBtn.addEventListener('click', function() {
-            if (!radioPlaying) {
-                radioPlayPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
-                radioPlaying = true;
-                updateNowPlaying();
-                updateProgress();
+        // Event listeners
+        radioPlayPauseBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                pauseSong();
             } else {
-                radioPlayPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
-                radioPlaying = false;
-                clearInterval(progressInterval);
+                playSong();
             }
         });
         
-        radioVolumeSlider.addEventListener('input', function() {
-            // Atualizar volume
+        radioVolumeSlider.addEventListener('input', () => {
+            audio.volume = radioVolumeSlider.value;
         });
         
         radioPrevBtn.addEventListener('click', playPrevSong);
         radioNextBtn.addEventListener('click', playNextSong);
+        
+        // Carregar a primeira música
+        loadSong(0);
         
         // Formulário de contato
         const contactForm = document.getElementById('contactForm');
