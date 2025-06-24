@@ -1282,7 +1282,7 @@
                         </div>
                         <div class="radio-text">
                             <h3>Músicas Locais</h3>
-                            <p>Seleção de músicas da pasta /mp3</p>
+                            <p>Seleção de músicas da pasta mp3</p>
                         </div>
                     </div>
                     
@@ -1571,7 +1571,7 @@
         // Função para carregar e tocar a música
         function loadSong(index) {
             const song = musicList[index];
-            audio.src = `mp3/${song.file}`;
+            audio.src = `mp3${song.file}`;
             audio.load();
             updateNowPlaying(song.title, song.artist);
             playSong();
