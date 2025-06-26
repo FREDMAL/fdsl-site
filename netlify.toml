@@ -1,0 +1,27 @@
+[build]
+  command = "echo 'No build needed'"
+  publish = "/"
+
+[[redirects]]
+  from = "https://kaleidoscopic-entremet-3d3b9d.netlify.app/*"
+  to = "https://fdsl.com.br/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://fdsl.com.br/*"
+  to = "https://fdsl.com.br/:splat"
+  status = 301
+
+[[redirects]]
+  from = "https://www.fdsl.com.br/*"
+  to = "https://fdsl.com.br/:splat"
+  status = 301
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    Content-Security-Policy = "default-src 'self'"
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
