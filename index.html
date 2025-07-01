@@ -48,11 +48,11 @@
             left: 10px;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 8px;
             background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(10px);
             border-radius: 30px;
-            padding: 6px 12px;
+            padding: 5px 10px;
             border: 1px solid rgba(255, 255, 255, 0.3);
             z-index: 10;
             max-width: 320px;
@@ -663,12 +663,17 @@
             color: #bbb;
         }
         
-/* Adicione este novo estilo para o botão de música */
-        .music-control-btn {
+/* Estilos modificados para os controles de música */
+        .music-controls {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .music-btn {
             background: black;
             border-radius: 50%;
-            width: 40px;
-            height: 40px;
+            width: 30px;
+            height: 30px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -678,39 +683,34 @@
             position: relative;
         }
         
-        .music-control-btn i {
+        .music-btn i {
             color: red;
-            font-size: 18px;
+            font-size: 14px;
             transition: all 0.3s ease;
         }
         
-        .music-control-btn.paused i {
+        .music-btn.paused i.fa-pause {
             color: white;
         }
         
-        .music-control-btn:hover {
+        .music-btn:hover {
             transform: scale(1.1);
             box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
         }
         
         /* Ajuste para os controles do cabeçalho */
         .header-controls {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            border-radius: 30px;
-            padding: 6px 12px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            z-index: 10;
-            max-width: 320px;
-            transition: all 0.4s ease;
+            gap: 5px;
         }
         
+        .track-info {
+            font-size: 0.7rem;
+            color: white;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100px;
+        }
 
         /* Modal de pagamento com scroll */
         .payment-modal {
@@ -1009,6 +1009,10 @@
             .weather-widget {
                 min-width: 100%;
             }
+            
+            .track-info {
+                max-width: 70px;
+            }
         }
     </style>
 </head>
@@ -1021,10 +1025,16 @@
                 <div class="clock-date" id="clock-date">01/01/2023</div>
             </div>
             
-            <!-- Botão de controle de música -->
-            <div class="music-control-btn" id="musicControl">
-                <i class="fas fa-play"></i>
+            <!-- Controles de música modificados -->
+            <div class="music-controls">
+                <div class="music-btn" id="musicControl">
+                    <i class="fas fa-play"></i>
+                </div>
+                <div class="music-btn" id="skipMusic">
+                    <i class="fas fa-forward"></i>
+                </div>
             </div>
+            <div class="track-info" id="trackInfo">radio.mp3</div>
         </div>
         
         <div class="logo">FDSL PRÉ-MOLDADOS</div>
@@ -1342,7 +1352,7 @@
         </div>
     </footer>
 
- <!-- Elemento de áudio oculto -->
+    <!-- Elemento de áudio oculto -->
     <audio id="background-music" loop>
         <source src="music/radio.mp3" type="audio/mpeg">
         Seu navegador não suporta o elemento de áudio.
@@ -1553,14 +1563,43 @@
             modalTotal.value = `R$ ${total.toFixed(2).replace('.', ',')}`;
         }
 
-// Controle de música
+        // Controle de música
         const backgroundMusic = document.getElementById('background-music');
         const musicControl = document.getElementById('musicControl');
+        const skipMusicButton = document.getElementById('skipMusic');
+        const trackInfo = document.getElementById('trackInfo');
         const musicIcon = musicControl.querySelector('i');
         
-        // Verifica se a música deve começar tocando ou não
+        // Lista de músicas
+        const musicFiles = [
+            'music/radio.mp3',
+            'music/radio1.mp3',
+            'music/radio2.mp3'
+            
+        ];
+        let currentTrackIndex = 0;
         let isPlaying = false;
         
+        // Função para carregar e tocar a faixa atual
+        function loadTrack(index) {
+            backgroundMusic.src = musicFiles[index];
+            backgroundMusic.load();
+            
+            // Atualizar nome da faixa
+            const fileName = musicFiles[index].split('/').pop();
+            trackInfo.textContent = fileName;
+            
+            if (isPlaying) {
+                backgroundMusic.play().catch(e => {
+                    console.log("Reprodução automática bloqueada: ", e);
+                });
+            }
+        }
+        
+        // Inicializa a primeira faixa
+        loadTrack(currentTrackIndex);
+        
+        // Botão de play/pause
         musicControl.addEventListener('click', function() {
             if (isPlaying) {
                 backgroundMusic.pause();
@@ -1579,6 +1618,24 @@
                     });
             }
             isPlaying = !isPlaying;
+        });
+        
+        // Botão de pular música
+        skipMusicButton.addEventListener('click', function() {
+            currentTrackIndex = (currentTrackIndex + 1) % musicFiles.length;
+            loadTrack(currentTrackIndex);
+            
+            // Se estava tocando, continua tocando a nova música
+            if (isPlaying) {
+                backgroundMusic.play();
+            }
+        });
+        
+        // Tratar quando a música terminar
+        backgroundMusic.addEventListener('ended', function() {
+            // Volta para o início da mesma música para loop
+            backgroundMusic.currentTime = 0;
+            backgroundMusic.play();
         });
         
         // Solução para autoplay bloqueado pelos navegadores
