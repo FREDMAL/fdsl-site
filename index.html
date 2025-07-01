@@ -25,7 +25,6 @@
             --card-bg: rgba(255, 255, 255, 0.85);
             --payment-bg: rgba(255, 255, 255, 0.95);
             --shop-color: #27ae60;
-            --radio-color: #e74c3c;
         }
         
         body {
@@ -40,6 +39,44 @@
             text-decoration: none;
             color: inherit;
             transition: all 0.3s ease;
+        }
+        
+        /* Relógio e Player no cabeçalho - menor e à esquerda */
+        .header-controls {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 6px 12px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            z-index: 10;
+            max-width: 320px;
+            transition: all 0.4s ease;
+        }
+        
+        .top-clock {
+            color: white;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            display: flex;
+            flex-direction: column;
+            font-size: 0.9rem;
+        }
+        
+        .clock-time {
+            font-size: 1rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        
+        .clock-date {
+            font-size: 0.75rem;
+            opacity: 0.9;
         }
         
         /* Cabeçalho sem cantos arredondados */
@@ -81,7 +118,6 @@
             justify-content: center;
             list-style: none;
             flex-wrap: wrap;
-            align-items: center;
         }
         
         nav ul li {
@@ -117,34 +153,6 @@
             box-shadow: 0 5px 15px rgba(39, 174, 96, 0.3) !important;
         }
         
-        /* Relógio na barra de navegação */
-        .nav-clock {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            padding: 5px 12px;
-            border-radius: 30px;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            min-width: 130px;
-        }
-        
-        .clock-time {
-            font-size: 1.1rem;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-        
-        .clock-date {
-            font-size: 0.8rem;
-            opacity: 0.9;
-        }
-        
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -152,9 +160,7 @@
         }
         
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/banner.jpg');
-            background-size: cover;
-            background-position: center;
+            position: relative;
             height: 60vh;
             min-height: 400px;
             display: flex;
@@ -168,6 +174,32 @@
             overflow: hidden;
         }
         
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6));
+            z-index: -1;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 20px;
+            z-index: 1;
+        }
+        
         .hero h1 {
             font-size: 2.8rem;
             margin-bottom: 20px;
@@ -176,7 +208,6 @@
         
         .hero p {
             font-size: 1.3rem;
-            max-width: 800px;
             margin-bottom: 30px;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
@@ -225,10 +256,27 @@
         
         .product-image {
             height: 250px;
-            background-size: cover;
-            background-position: center;
             position: relative;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .product-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
         }
         
         .product-info {
@@ -808,16 +856,6 @@
                 flex-direction: column;
                 align-items: center;
             }
-            
-            nav ul {
-                flex-wrap: wrap;
-            }
-            
-            .nav-clock {
-                order: 1;
-                width: 100%;
-                margin-top: 10px;
-            }
         }
         
         @media (max-width: 768px) {
@@ -846,12 +884,28 @@
                 font-size: 2rem;
             }
             
+            .header-controls {
+                top: 5px;
+                left: 5px;
+                padding: 5px 10px;
+                gap: 8px;
+                max-width: 280px;
+            }
+            
+            .volume-control input {
+                width: 50px;
+            }
+            
+            .footer-content {
+                gap: 30px;
+            }
+            
             .clock-time {
-                font-size: 1rem;
+                font-size: 0.9rem;
             }
             
             .clock-date {
-                font-size: 0.75rem;
+                font-size: 0.7rem;
             }
             
             .logo {
@@ -878,6 +932,15 @@
                 font-size: 1.8rem;
             }
             
+            .header-controls {
+                position: relative;
+                top: 0;
+                left: 0;
+                margin: 10px auto;
+                width: 95%;
+                max-width: none;
+            }
+            
             .about {
                 padding: 30px 20px;
             }
@@ -897,41 +960,43 @@
             .weather-widget {
                 min-width: 100%;
             }
-            
-            .nav-clock {
-                min-width: 120px;
-            }
         }
     </style>
 </head>
 <body>
     <header>
+        <!-- Controles de relógio e música no cabeçalho -->
+        <div class="header-controls">
+            <div class="top-clock" id="relogio">
+                <div class="clock-time" id="clock-time">00:00:00</div>
+                <div class="clock-date" id="clock-date">01/01/2023</div>
+            </div>
+        </div>
+        
         <div class="logo">FDSL PRÉ-MOLDADOS</div>
         <div class="slogan">Qualidade e Resistência em Concreto</div>
     </header>
     
-    <nav>
-        <ul>
-            <li><a href="#inicio" class="active">Início</a></li>
-            <li><a href="#produtos">Produtos</a></li>
-            <li><a href="#sobre">Sobre Nós</a></li>
-            <li><a href="#contato">Contato</a></li>
-            <li>
-                <a href="FDSLShop.html" target="_blank" class="shop-btn">FDSLShop</a>
-            </li>
-            <!-- Relógio na barra de navegação -->
-            <li class="nav-clock">
-                <div class="top-clock" id="relogio">
-                    <div class="clock-time" id="clock-time">00:00:00</div>
-                    <div class="clock-date" id="clock-date">01/01/2023</div>
-                </div>
-            </li>
-        </ul>
-    </nav>
+   <nav>
+    <ul>
+        <li><a href="#inicio" class="active">Início</a></li>
+        <li><a href="#produtos">Produtos</a></li>
+        <li><a href="#sobre">Sobre Nós</a></li>
+        <li><a href="#contato">Contato</a></li>
+        <li>
+            <a href="index2.html" target="_blank" class="shop-btn">FDSLShop</a>
+        </li>
+    </ul>
+</nav>
 
     
     <div class="container">
         <section id="inicio" class="hero">
+            <video class="hero-video" autoplay muted loop playsinline>
+                <source src="videos/banner.mp4" type="video/mp4">
+                Seu navegador não suporta vídeos HTML5.
+            </video>
+            <div class="video-overlay"></div>
             <div class="hero-content">
                 <h1>Blocos Pré-Moldados de Alta Qualidade</h1>
                 <p>Fabricamos blocos estruturais, pavers, canaletas e outros produtos em concreto para sua obra. Atendemos exclusivamente a região de São Miguel do Guaporé - RO.</p>
@@ -944,7 +1009,8 @@
             <div class="products">
                 <div class="product-card">
                     <div class="payment-badge">PIX ou Cartão</div>
-                    <div class="product-image" style="background-image: url('images/paver.jpg');">
+                    <div class="product-image">
+                        <img src="images/paver.jpg" alt="Blocos Pavers">
                         <div class="paver-notice">
                             <i class="fas fa-info-circle"></i> Em breve
                         </div>
@@ -957,7 +1023,9 @@
                 
                 <div class="product-card">
                     <div class="payment-badge">PIX ou Cartão</div>
-                    <div class="product-image" style="background-image: url('images/estrutural.jpg');"></div>
+                    <div class="product-image">
+                        <img src="images/estrutural.jpg" alt="Blocos Estruturais">
+                    </div>
                     <div class="product-info">
                         <h3>Blocos Estruturais</h3>
                         <span class="product-price">R$ 5.000,00 <small>o milheiro</small></span>
@@ -968,7 +1036,12 @@
                 
                 <div class="product-card">
                     <div class="payment-badge">PIX ou Cartão</div>
-                    <div class="product-image" style="background-image: url('images/canaletas.jpg');"></div>
+                    <div class="product-image">
+                        <video class="product-video" autoplay muted loop playsinline>
+                            <source src="videos/canaletas.mp4" type="video/mp4">
+                            Seu navegador não suporta vídeos HTML5.
+                        </video>
+                    </div>
                     <div class="product-info">
                         <h3>Blocos de Canaletas</h3>
                         <span class="product-price">R$ 5,00 <small>a peça</small></span>
@@ -1017,9 +1090,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            
             </div>
         </section>
         
