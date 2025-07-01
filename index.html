@@ -5,10 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FDSL Indústria de Pré-Moldados | Concreto de Qualidade</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="/css/styles.css">
-</head>
-<body>
-<style>
+    <style>
         * {
             margin: 0;
             padding: 0;
@@ -45,100 +42,11 @@
             transition: all 0.3s ease;
         }
         
-        /* Layout adaptativo para os controles do cabeçalho */
-        .header-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            background-color: var(--primary);
-        }
-        
-        .logo-area {
-            flex: 1;
-            min-width: 200px;
-            text-align: center;
-        }
-        
-        .header-controls {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 8px;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(1px);
-            border-radius: 30px;
-            padding: 8px 15px;
-            border: 1px solid rgba(39, 174, 96, 0.4);
-            z-index: 10;
-            max-width: 280px;
-            transition: all 0.4s ease;
-            margin-top: 5px;
-        }
-        
-        .top-clock {
-            color: white;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            display: flex;
-            flex-direction: column;
-            font-size: 0.9rem;
-        }
-        
-        .clock-time {
-            font-size: 1rem;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-        
-        .clock-date {
-            font-size: 0.75rem;
-            opacity: 0.9;
-        }
-        
-        .music-player {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .music-player button {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1rem;
-            cursor: pointer;
-            width: 26px;
-            height: 26px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-        }
-        
-        .music-player button:hover {
-            background: rgba(255, 255, 255, 0.3);
-        }
-        
-        .volume-control {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-        
-        .volume-control input {
-            width: 60px;
-            height: 4px;
-            accent-color: var(--accent);
-        }
-        
         /* Cabeçalho sem cantos arredondados */
         header {
             background-color: var(--primary);
             color: white;
-            padding: 10px 0;
+            padding: 20px 0;
             text-align: center;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             position: relative;
@@ -173,6 +81,7 @@
             justify-content: center;
             list-style: none;
             flex-wrap: wrap;
+            align-items: center;
         }
         
         nav ul li {
@@ -206,6 +115,34 @@
         .shop-btn:hover {
             background-color: var(--shop-color) !important;
             box-shadow: 0 5px 15px rgba(39, 174, 96, 0.3) !important;
+        }
+        
+        /* Relógio na barra de navegação */
+        .nav-clock {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            padding: 5px 12px;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            min-width: 130px;
+        }
+        
+        .clock-time {
+            font-size: 1.1rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        
+        .clock-date {
+            font-size: 0.8rem;
+            opacity: 0.9;
         }
         
         .container {
@@ -833,152 +770,6 @@
             background: white;
         }
         
-        /* Player na barra de navegação */
-        .nav-player {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-left: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 6px 15px;
-            border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .nav-player button {
-            background: none;
-            border: none;
-            color: white;
-            cursor: pointer;
-            width: 26px;
-            height: 26px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-        }
-        
-        .nav-player button:hover {
-            background: rgba(255, 255, 255, 0.3);
-        }
-        
-        .nav-volume {
-            width: 60px;
-            height: 4px;
-            accent-color: var(--accent);
-        }
-        
-        /* Player de rádio melhorado */
-        .radio-player-container {
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: 15px;
-            padding: 15px;
-            margin-top: 20px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .radio-info {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 15px;
-            color: white;
-        }
-        
-        .radio-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 10px;
-            overflow: hidden;
-            background: linear-gradient(135deg, #e74c3c, #c0392b);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-        }
-        
-        .radio-text h3 {
-            font-size: 1.3rem;
-            margin-bottom: 5px;
-        }
-        
-        .radio-text p {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-        
-        .radio-controls {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .radio-controls button {
-            background: rgba(255, 255, 255, 0.15);
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            color: white;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .radio-controls button:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: scale(1.1);
-        }
-        
-        .radio-progress {
-            flex: 1;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 2px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .progress-bar {
-            position: absolute;
-            height: 100%;
-            width: 30%;
-            background: var(--radio-color);
-            border-radius: 2px;
-        }
-        
-        .radio-volume {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            width: 100px;
-        }
-        
-        .radio-volume input {
-            width: 100%;
-            accent-color: var(--radio-color);
-        }
-        
-        .now-playing {
-            margin-top: 10px;
-            padding: 10px;
-            background: rgba(0, 0, 0, 0.4);
-            border-radius: 8px;
-            color: white;
-            font-size: 0.9rem;
-            text-align: center;
-        }
-        
-        .now-playing span {
-            color: var(--accent-light);
-            font-weight: bold;
-        }
-        
         @keyframes modalAppear {
             from {
                 opacity: 0;
@@ -1017,6 +808,16 @@
                 flex-direction: column;
                 align-items: center;
             }
+            
+            nav ul {
+                flex-wrap: wrap;
+            }
+            
+            .nav-clock {
+                order: 1;
+                width: 100%;
+                margin-top: 10px;
+            }
         }
         
         @media (max-width: 768px) {
@@ -1045,38 +846,12 @@
                 font-size: 2rem;
             }
             
-            .header-container {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-            
-            .header-controls {
-                margin-top: 15px;
-                align-self: center;
-                max-width: 100%;
-            }
-            
-            .volume-control input {
-                width: 50px;
-            }
-            
-            .footer-content {
-                gap: 30px;
-            }
-            
             .clock-time {
-                font-size: 0.9rem;
+                font-size: 1rem;
             }
             
             .clock-date {
-                font-size: 0.7rem;
-            }
-            
-            .music-player button {
-                font-size: 0.9rem;
-                width: 22px;
-                height: 22px;
+                font-size: 0.75rem;
             }
             
             .logo {
@@ -1087,17 +862,12 @@
             .slogan {
                 font-size: 1rem;
             }
-            
-            .nav-player {
-                margin: 10px auto;
-                width: 90%;
-                justify-content: center;
-            }
         }
         
         @media (max-width: 480px) {
             .logo {
                 font-size: 1.8rem;
+                padding-top: 20px;
             }
             
             .hero h1 {
@@ -1106,14 +876,6 @@
             
             .section-title {
                 font-size: 1.8rem;
-            }
-            
-            .header-controls {
-                width: 100%;
-                max-width: none;
-                flex-direction: row;
-                justify-content: center;
-                padding: 5px 10px;
             }
             
             .about {
@@ -1136,41 +898,16 @@
                 min-width: 100%;
             }
             
-            .nav-player {
-                padding: 5px 10px;
-            }
-            
-            .radio-controls {
-                flex-wrap: wrap;
-            }
-            
-            .radio-progress {
-                order: 1;
-                width: 100%;
-                margin-top: 10px;
+            .nav-clock {
+                min-width: 120px;
             }
         }
     </style>
 </head>
 <body>
-
     <header>
-        <div class="header-container">
-            <div class="logo-area">
-                <div class="logo">FDSL PRÉ-MOLDADOS</div>
-                <div class="slogan">Qualidade e Resistência em Concreto</div>
-            </div>
-            
-            <!-- Controles de relógio e música no cabeçalho -->
-            <div class="header-controls">
-                <div class="top-clock" id="relogio">
-                    <div class="clock-time" id="clock-time">00:00:00</div>
-                    <div class="clock-date" id="clock-date">01/01/2023</div>
-                </div>
-                
-                </div>
-            </div>
-        </div>
+        <div class="logo">FDSL PRÉ-MOLDADOS</div>
+        <div class="slogan">Qualidade e Resistência em Concreto</div>
     </header>
     
     <nav>
@@ -1179,9 +916,15 @@
             <li><a href="#produtos">Produtos</a></li>
             <li><a href="#sobre">Sobre Nós</a></li>
             <li><a href="#contato">Contato</a></li>
-            <!-- Botão FDSLShop -->
             <li>
                 <a href="index2.html" target="_blank" class="shop-btn">FDSLShop</a>
+            </li>
+            <!-- Relógio na barra de navegação -->
+            <li class="nav-clock">
+                <div class="top-clock" id="relogio">
+                    <div class="clock-time" id="clock-time">00:00:00</div>
+                    <div class="clock-date" id="clock-date">01/01/2023</div>
+                </div>
             </li>
         </ul>
     </nav>
@@ -1245,8 +988,6 @@
                     <p>Trabalhamos exclusivamente sob encomenda, garantindo que cada produto seja fabricado de acordo com as especificações do cliente. Nossa área de atuação é exclusivamente a região de São Miguel do Guaporé.</p>
                     <p>Horário de funcionamento: Segunda a Sexta das 7h às 18h e Sábado das 7h às 12h.</p>
                 </div>
-
-
                 <div class="about-info">
                     <div class="weather-widget" id="weatherWidget">
                         <h3>Previsão do Tempo</h3>
@@ -1276,36 +1017,9 @@
                         </div>
                     </div>
                 </div>
-                
-                <!-- Player de Músicas Locais -->
-                <div class="radio-player-container">
-                    <div class="radio-info">
-                        <div class="radio-icon">
-                            <i class="fas fa-music"></i>
-                        </div>
-                        <div class="radio-text">
-                            <h3>Músicas Locais</h3>
-                            <p>Seleção de músicas da pasta /mp3</p>
-                        </div>
-                    </div>
-                    
-                    <div class="radio-controls">
-                        <button id="radio-prev"><i class="fas fa-step-backward"></i></button>
-                        <button id="radio-playPauseBtn"><i class="fas fa-play"></i></button>
-                        <button id="radio-next"><i class="fas fa-step-forward"></i></button>
-                        <div class="radio-progress">
-                            <div class="progress-bar" id="progressBar"></div>
-                        </div>
-                        <div class="radio-volume">
-                            <i class="fas fa-volume-up"></i>
-                            <input type="range" id="radio-volumeSlider" min="0" max="1" step="0.1" value="0.5">
-                        </div>
-                    </div>
-                    
-                    <div class="now-playing" id="nowPlaying">
-                        TOCANDO AGORA: <span>Nenhuma música selecionada</span>
-                    </div>
-                </div>
+            </div>
+            
+            
             </div>
         </section>
         
@@ -1324,7 +1038,6 @@
                 <div class="contact-form">
                     <h3>Envie sua Mensagem</h3>
                     <form id="contactForm">
-                    <form id="contactForm" netlify>
                         <div class="form-group">
                             <label for="name">Nome:</label>
                             <input type="text" id="name" name="name" required>
@@ -1421,7 +1134,7 @@
                     </div>
                     
                     <div class="pix-code">
-                        <!-- Código PIX aqui -->
+               
                     </div>
                     
                     <p>Após o pagamento, seu pedido será processado em até 24 horas.</p>
@@ -1549,95 +1262,6 @@
         
         updateWeather();
         setInterval(updateWeather, 1800000);
-        
-        // Player de Músicas Locais
-        const radioPlayPauseBtn = document.getElementById('radio-playPauseBtn');
-        const radioVolumeSlider = document.getElementById('radio-volumeSlider');
-        const nowPlayingElement = document.getElementById('nowPlaying');
-        const progressBar = document.getElementById('progressBar');
-        const radioPrevBtn = document.getElementById('radio-prev');
-        const radioNextBtn = document.getElementById('radio-next');
-        
-        // Lista de músicas locais (arquivos na pasta /mp3)
-        const musicList = [
-            { title: "Música 1", artist: "Artista 1", file: "musica1.mp3" },
-            { title: "Música 2", artist: "Artista 2", file: "musica2.mp3" },
-            { title: "Música 3", artist: "Artista 3", file: "musica3.mp3" },
-            { title: "Música 4", artist: "Artista 4", file: "musica4.mp3" },
-            { title: "Música 5", artist: "Artista 5", file: "musica5.mp3" }
-        ];
-        
-        let currentSongIndex = 0;
-        let audio = new Audio();
-        let isPlaying = false;
-        let progressUpdateInterval;
-        
-        // Função para carregar e tocar a música
-        function loadSong(index) {
-            const song = musicList[index];
-            audio.src = `mp3/${song.file}`;
-            audio.load();
-            updateNowPlaying(song.title, song.artist);
-            playSong();
-        }
-        
-        function playSong() {
-            audio.play();
-            isPlaying = true;
-            radioPlayPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
-            startProgressUpdate();
-        }
-        
-        function pauseSong() {
-            audio.pause();
-            isPlaying = false;
-            radioPlayPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
-            clearInterval(progressUpdateInterval);
-        }
-        
-        function updateNowPlaying(title, artist) {
-            nowPlayingElement.innerHTML = `TOCANDO AGORA: <span>${title} - ${artist}</span>`;
-        }
-        
-        function startProgressUpdate() {
-            clearInterval(progressUpdateInterval);
-            progressUpdateInterval = setInterval(() => {
-                const progress = (audio.currentTime / audio.duration) * 100;
-                progressBar.style.width = `${progress}%`;
-                if (progress >= 100) {
-                    playNextSong();
-                }
-            }, 1000);
-        }
-        
-        function playNextSong() {
-            currentSongIndex = (currentSongIndex + 1) % musicList.length;
-            loadSong(currentSongIndex);
-        }
-        
-        function playPrevSong() {
-            currentSongIndex = (currentSongIndex - 1 + musicList.length) % musicList.length;
-            loadSong(currentSongIndex);
-        }
-        
-        // Event listeners
-        radioPlayPauseBtn.addEventListener('click', () => {
-            if (isPlaying) {
-                pauseSong();
-            } else {
-                playSong();
-            }
-        });
-        
-        radioVolumeSlider.addEventListener('input', () => {
-            audio.volume = radioVolumeSlider.value;
-        });
-        
-        radioPrevBtn.addEventListener('click', playPrevSong);
-        radioNextBtn.addEventListener('click', playNextSong);
-        
-        // Carregar a primeira música
-        loadSong(0);
         
         // Formulário de contato
         const contactForm = document.getElementById('contactForm');
@@ -1798,6 +1422,6 @@
             const total = price * quantity;
             modalTotal.value = `R$ ${total.toFixed(2).replace('.', ',')}`;
         }
-      <script src="/js/scripts.js"></script>
+    </script>
 </body>
 </html>
